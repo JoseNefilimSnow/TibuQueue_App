@@ -1,0 +1,58 @@
+<ion-header>
+
+  <ion-toolbar color="dark">
+    <ion-title>Tibu-Queue</ion-title>
+    <ion-buttons slot="end">
+      <ion-button large (click)="ngOnInit()">
+        <ion-icon name="wifi"></ion-icon>
+      </ion-button>
+      <ion-button large (click)="loadList()">
+        <ion-icon name="refresh"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content center-text>
+  <ion-fab vertical="bottom" horizontal="end">
+    <ion-fab-button bottom color={{colorS}} (click)="addQ()">
+      <ion-icon name={{icontype}}></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-card [hidden]="addQuestion">
+    <ion-card-header>
+      <ion-card-title><br>
+        <ion-label>Envia tu pregunta:</ion-label>
+      </ion-card-title>
+    </ion-card-header>
+    <form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+
+      <ion-item>
+        <ion-label position="floating">Nombre de alumno:</ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Pregunta:</ion-label>
+        <ion-input type="text" formControlName="question"></ion-input>
+      </ion-item>
+      <br>
+      <ion-button expand="full" type="submit" fill="outline" shape="round" [disabled]="!questionForm.valid">Enviar
+      </ion-button>
+
+    </form>
+  </ion-card>
+  <ion-card [hidden]="!addQuestion">
+    <ion-list *ngFor="let question of arrayQuestion">
+      <ion-item>
+        <ion-label>Nombre del alumno: {{question.name}}<br>Pregunta: {{question.question}}</ion-label>
+        <ion-button (click)="delete(question)" fill="outline" color="danger">
+          <ion-icon color="danger" name="trash"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+</ion-content>

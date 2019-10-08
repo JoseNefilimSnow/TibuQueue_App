@@ -1,0 +1,1 @@
+cd tibuqueue_api && nodemon .

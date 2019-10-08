@@ -1,0 +1,8 @@
+{
+  "name": "TibuQueue",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "angular"
+}
