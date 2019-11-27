@@ -36,7 +36,7 @@
 
       <ion-item>
         <ion-label position="floating">Pregunta:</ion-label>
-        <ion-input type="text" formControlName="question"></ion-input>
+        <ion-textarea placeholder="Pregunta" autoGrow="true" formControlName="question"></ion-textarea>
       </ion-item>
       <br>
       <ion-button expand="full" type="submit" fill="outline" shape="round" [disabled]="!questionForm.valid">Enviar
