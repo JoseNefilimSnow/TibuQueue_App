@@ -3,11 +3,11 @@
   <ion-toolbar color="dark">
     <ion-title>Tibu-Queue</ion-title>
     <ion-buttons slot="end">
-      <ion-button large (click)="ngOnInit()">
-        <ion-icon name="wifi"></ion-icon>
-      </ion-button>
-      <ion-button large (click)="loadList()">
+      <ion-button large (click)="ionViewDidEnter()">
         <ion-icon name="refresh"></ion-icon>
+      </ion-button>
+      <ion-button large (click)="info()">
+        <ion-icon name="information"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -45,10 +45,10 @@
     </form>
   </ion-card>
   <ion-card [hidden]="!addQuestion">
-    <ion-list *ngFor="let question of arrayQuestion">
+    <ion-list *ngFor="let question of arrayQuestion;let i = index">
       <ion-item>
         <ion-label>Nombre del alumno: {{question.name}}<br>Pregunta: {{question.question}}</ion-label>
-        <ion-button (click)="delete(question)" fill="outline" color="danger">
+        <ion-button (click)="delete(question,i)" fill="outline" color="danger">
           <ion-icon color="danger" name="trash"></ion-icon>
         </ion-button>
       </ion-item>
